@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ata Raain — AI & ML Engineer | 42on-XMSn Certified</title>
+    <meta name="description" content="Portfolio of Ata Raain, 2nd-year AI & ML student at GLA University. 42on-XMSn Certified, Full-Stack Developer & ML enthusiast.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            950: '#070913',
+                        },
+                        azure: {
+                            400: '#38bdf8',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Background Grid Pattern */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Glass Effect */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.35);
+        }
+
+        /* Gradient Glow */
+        .glow-sphere {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(130px);
+            pointer-events: none;
+            opacity: 0.45;
+        }
+    </style>
+</head>
+<body class="bg-[#05070e] text-slate-200 antialiased font-sans relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+
+    <!-- Ambient Glowing Orbs -->
+    <div class="glow-sphere w-[550px] h-[550px] bg-indigo-600 top-[-100px] left-[-150px] -z-10"></div>
+    <div class="glow-sphere w-[450px] h-[450px] bg-sky-600 top-[35%] right-[-120px] -z-10"></div>
+    <div class="glow-sphere w-[600px] h-[600px] bg-purple-700 bottom-[10%] left-[20%] -z-10"></div>
+
+    <!-- Mouse Tracking Spotlight Glow -->
+    <div id="spotlight" class="fixed inset-0 pointer-events-none z-30 transition duration-300 opacity-0 md:opacity-100" 
+         style="background: radial-gradient(600px circle at 0px 0px, rgba(99, 102, 241, 0.08), transparent 80%);">
+    </div>
+
+    <!-- Toast Notification for Copy Email -->
+    <div id="toast" class="fixed bottom-8 right-8 z-50 transform translate-y-24 opacity-0 transition-all duration-300 flex items-center gap-3 bg-slate-900 border border-emerald-500/50 text-white px-5 py-3.5 rounded-xl shadow-2xl">
+        <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
+        <span class="text-sm font-medium">Email address copied to clipboard!</span>
+    </div>
+
+    <!-- ==============================================
+         Header / Navigation
+    ============================================== -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-[#05070e]/80 backdrop-blur-xl border-b border-white/[0.06]">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="group flex items-center gap-2 text-lg font-bold tracking-tight text-white">
+                <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-600 to-cyan-400 flex items-center justify-center text-white text-sm font-mono shadow-md shadow-indigo-500/30">
+                    AR
+                </span>
+                <span>Ata Raain<span class="text-indigo-400">.</span></span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/[0.08] px-4 py-1.5 rounded-full text-sm font-medium text-slate-300 backdrop-blur-md">
+                <a href="#about" class="px-4 py-1.5 hover:text-white rounded-full hover:bg-white/[0.05] transition-all">About</a>
+                <a href="#skills" class="px-4 py-1.5 hover:text-white rounded-full hover:bg-white/[0.05] transition-all">Skills</a>
+                <a href="#certifications" class="px-4 py-1.5 hover:text-white rounded-full hover:bg-white/[0.05] transition-all">Certifications</a>
+                <a href="#projects" class="px-4 py-1.5 hover:text-white rounded-full hover:bg-white/[0.05] transition-all">Projects</a>
+                <a href="#interests" class="px-4 py-1.5 hover:text-white rounded-full hover:bg-white/[0.05] transition-all">Interests</a>
+                <a href="#contact" class="px-4 py-1.5 hover:text-white rounded-full hover:bg-white/[0.05] transition-all">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="https://github.com/rayeenata8-byte" target="_blank" class="p-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/[0.06] border border-transparent hover:border-white/[0.08] transition-all" aria-label="GitHub">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+                <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white transition-all shadow-lg shadow-indigo-600/25">
+                    <span>Get in touch</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-6 pt-36 bg-grid">
+
+        <!-- ==============================================
+             Hero Section
+        ============================================== -->
+        <section class="min-h-[80vh] flex flex-col justify-center items-start relative pb-20">
+            <!-- Availability Badges -->
+            <div class="flex flex-wrap items-center gap-3 mb-8">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold text-indigo-300 bg-indigo-950/60 border border-indigo-500/30 shadow-inner shadow-indigo-500/10">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>2nd Year AI & ML Undergrad @ GLA University</span>
+                </div>
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold text-sky-300 bg-sky-950/60 border border-sky-500/30">
+                    <i data-lucide="award" class="w-3.5 h-3.5 text-sky-400"></i>
+                    <span>Certified: 42on-XMSn</span>
+                </div>
+            </div>
+
+            <!-- Headline -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
+                Engineering Intelligent <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-sky-300 to-teal-300">
+                    Systems & Cloud Solutions.
+                </span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-slate-400 mt-6 max-w-2xl leading-relaxed">
+                Hi, I'm <span class="text-white font-semibold">Ata Raain</span>. An AI & Machine Learning student at <span class="text-slate-200 underline decoration-indigo-500 decoration-2 underline-offset-4">GLA University</span>, certified in <span class="text-sky-300 font-medium">42on-XMSn</span>, and passionate about problem-solving, full-stack architecture, and machine learning.
+            </p>
+
+            <!-- CTA Button Group -->
+            <div class="mt-10 flex flex-wrap items-center gap-4">
+                <a href="#projects" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-all shadow-xl shadow-indigo-600/30 group">
+                    <span>View Featured Projects</span>
+                    <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-0.5 transition-transform"></i>
+                </a>
+                <a href="#certifications" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl glass-card text-slate-200 hover:text-white font-semibold text-sm transition-all hover:bg-white/[0.08]">
+                    <i data-lucide="award" class="w-4 h-4 text-sky-400"></i>
+                    <span>View Credentials</span>
+                </a>
+                <button onclick="copyEmail()" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.06] text-slate-300 hover:text-white font-semibold text-sm transition-all">
+                    <i data-lucide="copy" class="w-4 h-4 text-indigo-400"></i>
+                    <span>Copy Email</span>
+                </button>
+            </div>
+
+            <!-- Quick Metrics / Highlights Bar -->
+            <div class="mt-16 pt-8 border-t border-white/[0.08] w-full grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div>
+                    <div class="text-2xl font-bold text-white font-mono">B.Tech</div>
+                    <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">GLA University (2027)</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-sky-400 font-mono">42on</div>
+                    <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">XMSn Certified</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-indigo-400 font-mono">AI & ML</div>
+                    <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Core Specialization</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-teal-400 font-mono">Full-Stack</div>
+                    <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Dev & Databases</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================
+             About Bento Grid Section
+        ============================================== -->
+        <section id="about" class="py-24 border-t border-white/[0.08]">
+            <div class="flex items-center gap-3 mb-3">
+                <span class="h-px w-8 bg-indigo-500"></span>
+                <span class="text-xs uppercase font-bold text-indigo-400 tracking-widest">About Me</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-12">Bridging algorithms, cloud, and modern software.</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Bento Card 1: Main Story -->
+                <div class="md:col-span-2 glass-card rounded-2xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-6">
+                            <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">AI & ML Engineering Mindset</h3>
+                        <p class="text-slate-400 leading-relaxed text-sm sm:text-base">
+                            Currently exploring predictive modeling, data structures, and cloud infrastructure at <strong class="text-slate-200">GLA University</strong>. With formal certification in <strong class="text-sky-400">42on-XMSn</strong>, I combine technical expertise with full-stack software development to build scalable and robust applications.
+                        </p>
+                    </div>
+                    <div class="mt-8 flex flex-wrap gap-2 text-xs font-mono text-slate-400">
+                        <span class="px-2.5 py-1 bg-white/[0.04] rounded-md border border-white/[0.06]">Cloud Fundamentals</span>
+                        <span class="px-2.5 py-1 bg-white/[0.04] rounded-md border border-white/[0.06]">Model Evaluation</span>
+                        <span class="px-2.5 py-1 bg-white/[0.04] rounded-md border border-white/[0.06]">Clean Architecture</span>
+                    </div>
+                </div>
+
+                <!-- Bento Card 2: Academic Focus -->
+                <div class="glass-card rounded-2xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Education</h3>
+                        <p class="text-sm font-semibold text-slate-300">GLA University</p>
+                        <p class="text-xs text-slate-400">B.Tech in Artificial Intelligence & Machine Learning</p>
+                        <p class="text-xs text-indigo-400 font-mono mt-1">2nd Year (Graduation 2027)</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/[0.08] text-xs text-slate-400">
+                        📍 Mathura, Uttar Pradesh, India
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================
+             Certifications & Credentials Section
+        ============================================== -->
+        <section id="certifications" class="py-24 border-t border-white/[0.08]">
+            <div class="flex items-center gap-3 mb-3">
+                <span class="h-px w-8 bg-sky-500"></span>
+                <span class="text-xs uppercase font-bold text-sky-400 tracking-widest">Industry Credentials</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-12">Verified Certifications</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- 42on-XMSn Certification Card (Featured) -->
+                <div class="lg:col-span-2 glass-card rounded-3xl p-8 border border-sky-500/30 hover:border-sky-400/60 transition-all relative overflow-hidden bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-sky-950/20">
+                    <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
+                        <div class="flex items-start gap-4">
+                            <!-- Official Style Badge Icon -->
+                            <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-400/30 flex items-center justify-center text-sky-400 flex-shrink-0 shadow-lg shadow-sky-500/10">
+                                <i data-lucide="shield-check" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20 mb-2">
+                                    <span>Verified Certification</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">42on-XMSn</h3>
+                                <p class="text-sm font-mono text-sky-400">Professional Credential</p>
+                            </div>
+                        </div>
+
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium text-emerald-400 bg-emerald-950/50 border border-emerald-800/40 self-start">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            Verified Credential
+                        </span>
+                    </div>
+
+                    <p class="text-slate-400 text-sm leading-relaxed mt-6">
+                        Demonstrates expertise in advanced technical frameworks and specialized systems architecture, validated through the 42on-XMSn curriculum.
+                    </p>
+
+                    <div class="mt-8 pt-6 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-4">
+                        <div class="space-y-1">
+                            <div class="text-xs text-slate-500 font-mono">Issued by: <span class="text-slate-300">42on</span></div>
+                            <div class="text-xs text-slate-500 font-mono">Verification Code: <span class="text-sky-300 font-semibold">42on-XMSn</span></div>
+                        </div>
+
+                        <a href="#" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs tracking-wide transition-all shadow-lg shadow-sky-600/20">
+                            <span>Verify Credential</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Academic / Skill Verification Side Card -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-6">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Cloud & Core Mastery</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Validates readiness for enterprise cloud architectures, serverless workloads, container deployment, and modern AI/ML cloud integration pipelines.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/[0.08]">
+                        <span class="text-xs font-mono text-slate-400 flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                            Continuous learning track
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================
+             Skills Section
+        ============================================== -->
+        <section id="skills" class="py-24 border-t border-white/[0.08]">
+            <div class="flex items-center gap-3 mb-3">
+                <span class="h-px w-8 bg-indigo-500"></span>
+                <span class="text-xs uppercase font-bold text-indigo-400 tracking-widest">Core Capabilities</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-12">Technical Toolkit</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Group 1: Programming Languages -->
+                <div class="glass-card rounded-2xl p-6 hover:shadow-indigo-500/5 transition-all">
+                    <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-5">
+                        <i data-lucide="code-2" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-white mb-4">Languages</h3>
+                    <ul class="space-y-2.5 text-sm text-slate-400 font-mono">
+                        <li class="flex items-center justify-between bg-white/[0.02] p-2 rounded-lg border border-white/[0.04]">
+                            <span>Python</span>
+                            <span class="text-xs text-indigo-400">Advanced</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-white/[0.02] p-2 rounded-lg border border-white/[0.04]">
+                            <span>Java</span>
+                            <span class="text-xs text-indigo-400">Core & OOP</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-white/[0.02] p-2 rounded-lg border border-white/[0.04]">
+                            <span>JavaScript</span>
+                            <span class="text-xs text-indigo-400">ES6+</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Group 2: AI & Data Science -->
+                <div class="glass-card rounded-2xl p-6 hover:shadow-indigo-500/5 transition-all">
+                    <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-5">
+                        <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-white mb-4">AI & Machine Learning</h3>
+                    <ul class="space-y-2.5 text-sm text-slate-400 font-mono">
+                        <li class="flex items-center justify-between bg-white/[0.02] p-2 rounded-lg border border-white/[0.04]">
+                            <span>Scikit-Learn</span>
+                            <span class="text-xs text-cyan-400">ML</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-white/[0.02] p-2 rounded-lg border border-white/[0.04]">
+                            <span>Pandas & NumPy</span>
+                            <span class="text-xs text-cyan-400">Data</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-white/[0.02] p-2 rounded-lg border border-white/[0.04]">
+                            <span>Data Analytics</span>
+                            <span class="text-xs text-cyan-400">EDA</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Group 3: Cloud & Web -->
+                <div class="glass-card rounded-2xl p-6 hover:shadow-indigo-500/5 transition-all">
+                    <div class="w-10 h-10 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center mb-5">
+                        <i data-lucide="cloud" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-white mb-4">Cloud & Backend</h3>
+                    <ul class="space-y-2.5 text-sm text-slate-400 font-mono">
+                        <li class="flex items-center justify-between bg-white/[0.02] p-2 rounded-lg border border-white/[0.04]">
+                            <span>42on-XMSn</span>
+                            <span class="text-xs text-sky-400">Certified</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-white/[0.02] p-2 rounded-lg border border-white/[0.04]">
+                            <span>Backend APIs</span>
+                            <span class="text-xs text-sky-400">REST</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-white/[0.02] p-2 rounded-lg border border-white/[0.04]">
+                            <span>Frontend (HTML/CSS)</span>
+                            <span class="text-xs text-sky-400">Tailwind</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Group 4: Databases & Tools -->
+                <div class="glass-card rounded-2xl p-6 hover:shadow-indigo-500/5 transition-all">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center mb-5">
+                        <i data-lucide="database" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-white mb-4">Databases & Tools</h3>
+                    <ul class="space-y-2.5 text-sm text-slate-400 font-mono">
+                        <li class="flex items-center justify-between bg-white/[0.02] p-2 rounded-lg border border-white/[0.04]">
+                            <span>SQL Databases</span>
+                            <span class="text-xs text-purple-400">Queries</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-white/[0.02] p-2 rounded-lg border border-white/[0.04]">
+                            <span>Git & GitHub</span>
+                            <span class="text-xs text-purple-400">VCS</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-white/[0.02] p-2 rounded-lg border border-white/[0.04]">
+                            <span>VS Code</span>
+                            <span class="text-xs text-purple-400">IDE</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================
+             Featured Projects Section
+        ============================================== -->
+        <section id="projects" class="py-24 border-t border-white/[0.08]">
+            <div class="flex items-center justify-between mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="h-px w-8 bg-indigo-500"></span>
+                        <span class="text-xs uppercase font-bold text-indigo-400 tracking-widest">Portfolio</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white">Featured Projects</h2>
+                </div>
+                <a href="https://github.com/rayeenata8-byte" target="_blank" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-indigo-400 hover:text-indigo-300">
+                    <span>View all on GitHub</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- Project 1: VOYX Sales Dashboard -->
+                <div class="glass-card rounded-3xl overflow-hidden group flex flex-col justify-between">
+                    <div class="p-8 pb-0">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-indigo-500/10 border border-indigo-500/20 text-indigo-300">Frontend & Backend</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">Database</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-sky-500/10 border border-sky-500/20 text-sky-300">Analytics</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors mb-3">
+                            VOYX Sales Dashboard
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            An enterprise-grade analytics dashboard designed to process and visualize transactional business metrics. Implements dynamic charts, revenue forecasting, inventory logs, and responsive layout design.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Code/Preview Simulation -->
+                    <div class="mx-8 mb-6 rounded-xl bg-[#080c18] border border-white/[0.08] p-4 font-mono text-xs text-slate-400">
+                        <div class="flex items-center gap-1.5 pb-3 mb-3 border-b border-white/[0.06]">
+                            <div class="w-3 h-3 rounded-full bg-rose-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                            <span class="ml-2 text-slate-500 text-[11px]">voyx-analytics-engine.py</span>
+                        </div>
+                        <p><span class="text-purple-400">import</span> pandas <span class="text-purple-400">as</span> pd</p>
+                        <p><span class="text-purple-400">def</span> <span class="text-sky-400">calculate_metrics</span>(sales_data):</p>
+                        <p class="pl-4 text-emerald-400"># Real-time aggregated KPIs & Growth trend</p>
+                        <p class="pl-4">return sales_data.groupby(<span class="text-amber-300">'category'</span>).sum()</p>
+                    </div>
+
+                    <div class="px-8 py-5 bg-white/[0.02] border-t border-white/[0.06] flex items-center justify-between">
+                        <a href="https://github.com/rayeenata8-byte" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-indigo-400 transition-colors">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                            <span>Source Code</span>
+                        </a>
+                        <span class="text-xs font-mono text-slate-500">GLA Uni Project</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: Predictive Machine Learning System -->
+                <div class="glass-card rounded-3xl overflow-hidden group flex flex-col justify-between">
+                    <div class="p-8 pb-0">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">Python</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-purple-500/10 border border-purple-500/20 text-purple-300">Scikit-Learn</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-amber-500/10 border border-amber-500/20 text-amber-300">Machine Learning</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-3">
+                            Predictive ML Data Pipeline
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            An automated machine learning pipeline built to preprocess raw datasets, handle missing values, engineer custom features, and train classification & regression models with high accuracy.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Code/Preview Simulation -->
+                    <div class="mx-8 mb-6 rounded-xl bg-[#080c18] border border-white/[0.08] p-4 font-mono text-xs text-slate-400">
+                        <div class="flex items-center gap-1.5 pb-3 mb-3 border-b border-white/[0.06]">
+                            <div class="w-3 h-3 rounded-full bg-rose-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                            <span class="ml-2 text-slate-500 text-[11px]">model_train.py</span>
+                        </div>
+                        <p><span class="text-purple-400">from</span> sklearn.ensemble <span class="text-purple-400">import</span> RandomForestClassifier</p>
+                        <p>model = RandomForestClassifier(n_estimators=<span class="text-indigo-400">100</span>)</p>
+                        <p>model.fit(X_train, y_train)</p>
+                        <p><span class="text-emerald-400"># Model evaluation & metrics output</span></p>
+                    </div>
+
+                    <div class="px-8 py-5 bg-white/[0.02] border-t border-white/[0.06] flex items-center justify-between">
+                        <a href="https://github.com/rayeenata8-byte" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-cyan-400 transition-colors">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                            <span>Explore Model</span>
+                        </a>
+                        <span class="text-xs font-mono text-slate-500">AI & ML Track</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==============================================
+             Interests & Hobbies (Academic & Casual)
+        ============================================== -->
+        <section id="interests" class="py-24 border-t border-white/[0.08]">
+            <div class="flex items-center gap-3 mb-3">
+                <span class="h-px w-8 bg-indigo-500"></span>
+                <span class="text-xs uppercase font-bold text-indigo-400 tracking-widest">Beyond The Code</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-12">Interests & Hobbies</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Card 1: Academic & Intellectual Pursuits -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between group hover:border-indigo-500/40 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+                                <i data-lucide="brain" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-mono text-indigo-400 px-3 py-1 rounded-full bg-indigo-950/60 border border-indigo-800/40">Intellectual</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Academic Pursuits</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Driven by continuous learning, algorithmic thinking, and breaking down complex technical challenges into manageable components.
+                        </p>
+
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3.5 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] text-sm text-slate-200">
+                                <div class="w-7 h-7 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                                    <i data-lucide="compass" class="w-4 h-4"></i>
+                                </div>
+                                <span><strong>Learning New Technologies:</strong> Exploring cutting-edge AI frameworks & tools</span>
+                            </div>
+                            <div class="flex items-center gap-3.5 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] text-sm text-slate-200">
+                                <div class="w-7 h-7 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                                    <i data-lucide="terminal" class="w-4 h-4"></i>
+                                </div>
+                                <span><strong>Programming & Building:</strong> Writing clean, maintainable software & scripts</span>
+                            </div>
+                            <div class="flex items-center gap-3.5 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] text-sm text-slate-200">
+                                <div class="w-7 h-7 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                                    <i data-lucide="lightbulb" class="w-4 h-4"></i>
+                                </div>
+                                <span><strong>Problem Solving:</strong> Tackling data structures & algorithmic logic</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Casual Interests & Lifestyle -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between group hover:border-cyan-500/40 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                                <i data-lucide="gamepad-2" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-mono text-cyan-400 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-800/40">Downtime</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Casual Hobbies</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Recharging creativity and tactical focus through immersive entertainment, strategic gameplay, and great storytelling.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.04] text-sm text-slate-200">
+                                <i data-lucide="swords" class="w-4 h-4 text-cyan-400"></i>
+                                <span><strong>Chess</strong></span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.04] text-sm text-slate-200">
+                                <i data-lucide="gamepad" class="w-4 h-4 text-indigo-400"></i>
+                                <span><strong>Gaming</strong></span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.04] text-sm text-slate-200">
+                                <i data-lucide="film" class="w-4 h-4 text-purple-400"></i>
+                                <span><strong>Shows & Movies</strong></span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.04] text-sm text-slate-200">
+                                <i data-lucide="music" class="w-4 h-4 text-emerald-400"></i>
+                                <span><strong>Listening to Music</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==============================================
+             Contact & Call to Action
+        ============================================== -->
+        <section id="contact" class="py-24 border-t border-white/[0.08] text-center relative">
+            <div class="max-w-2xl mx-auto">
+                <div class="inline-flex p-3 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 mb-6">
+                    <i data-lucide="mail" class="w-6 h-6"></i>
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+                    Let's collaborate on your next project.
+                </h2>
+                <p class="text-slate-400 text-base leading-relaxed mb-8">
+                    I am actively seeking internship opportunities, cloud/AI research collaborations, and software engineering roles. My inbox is always open.
+                </p>
+
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <a href="mailto:rayeenata8@gmail.com" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-base transition-all shadow-xl shadow-indigo-600/30">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        <span>Send Email Directly</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==============================================
+         Footer
+    ============================================== -->
+    <footer class="border-t border-white/[0.06] py-10 bg-[#04060b]">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-slate-500">
+            <p>© 2026 Ata Raain. Crafted with precision for AI, ML & Cloud.</p>
+            <div class="flex items-center gap-6">
+                <a href="https://github.com/rayeenata8-byte" target="_blank" class="hover:text-slate-300 transition-colors">GitHub</a>
+                <a href="mailto:rayeenata8@gmail.com" class="hover:text-slate-300 transition-colors">rayeenata8@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mouse Spotlight Tracking Effect
+        const spotlight = document.getElementById('spotlight');
+        window.addEventListener('mousemove', (e) => {
+            spotlight.style.background = `radial-gradient(650px circle at ${e.clientX}px ${e.clientY}px, rgba(99, 102, 241, 0.08), transparent 80%)`;
+        });
+
+        // Copy Email to Clipboard Functionality
+        function copyEmail() {
+            const email = 'rayeenata8@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.remove('translate-y-24', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                    toast.classList.add('translate-y-24', 'opacity-0');
+                }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
